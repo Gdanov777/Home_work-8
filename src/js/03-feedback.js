@@ -33,6 +33,7 @@ function onTextareaInput(e) {
 }
 
 function populateTextarea() {
+  try {
   const savedFormData = localStorage.getItem(STORAGE_KEY);
 
   if (savedFormData) {
@@ -41,5 +42,9 @@ function populateTextarea() {
     Object.entries(formData).forEach(([name, value]) => {
       refs.form.elements[name].value = value;
     });
+  }
+  } catch (error) {
+    console.log(error.name);
+        console.log(error.message);
   }
 }
